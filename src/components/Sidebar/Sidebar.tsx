@@ -109,29 +109,38 @@ const Sidebar = () => {
         <div onClick={toggleSidebar} className={styles.menu}>
           <Image priority={true} src={Menu} alt="Menu" width={24} height={24} />
         </div>
-        <div
-          className={styles.titleButton}
-          style={{ opacity: isSidebarOpen ? 0 : 1 }}
-          onClick={handleNewChat}
-        >
-          <Image
-            priority={true}
-            src={Pen}
-            alt={"Pen"}
-            width={20}
-            height={20}
-            className={styles.titleButtonIcon}
-          />
-          <p className={styles.titleButtonText}>New Chat</p>
+        <div className={styles.subHeader}>
+          <div
+            className={styles.titleButton}
+            style={{ opacity: isSidebarOpen ? 0 : 1 }}
+            onClick={handleNewChat}
+          >
+            <Image
+              priority={true}
+              src={Pen}
+              alt={"Pen"}
+              width={20}
+              height={20}
+              className={styles.titleButtonIcon}
+            />
+            <p className={styles.titleButtonText}>New Chat</p>
+          </div>
+          <div className={styles.upgradeContainer}>
+            <button
+              className={styles.upgradeButton}
+              onClick={() => router.push("/buy")}
+            >
+              Upgrade to Pro ✨
+            </button>
+          </div>
         </div>
       </div>
       {isSidebarOpen && (
         <>
           <div
             ref={sidebarRef}
-            className={`${styles.container} ${
-              isSidebarOpen && !isClosing ? styles.opening : ""
-            } ${isClosing ? styles.closing : ""}`}
+            className={`${styles.container} ${isSidebarOpen && !isClosing ? styles.opening : ""
+              } ${isClosing ? styles.closing : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className={styles.barContainer}>
@@ -230,9 +239,8 @@ const Sidebar = () => {
           </div>
           {width <= 512 && (
             <div
-              className={`${styles.mobileOverlay} ${
-                isClosing ? styles.mobileOverlayClosing : null
-              }`}
+              className={`${styles.mobileOverlay} ${isClosing ? styles.mobileOverlayClosing : null
+                }`}
             />
           )}
         </>
