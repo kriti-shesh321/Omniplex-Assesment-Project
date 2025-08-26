@@ -26,7 +26,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           yarn install --frozen-lockfile
-          yarn build --if-present
+          yarn build
           yarn test --if-present
 
       - name: Upload artifact for deployment job
@@ -64,3 +64,4 @@ jobs:
           package: .
 
           
+
